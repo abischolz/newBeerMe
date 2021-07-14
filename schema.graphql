@@ -1,0 +1,23 @@
+type Query {
+  breweries: [Brewery]
+  beers: [Beer]
+  brewery(id: ID!): Brewery
+  beer(id: ID!): Beer
+}
+
+type Mutation {
+  beer(name: String!, description: String): Beer!
+  brewery(name: String!, address: String): Brewery!
+}
+
+type Beer {
+  name: String!
+  description: String
+  brewery: Brewery
+}
+
+type Brewery {
+  name: String!
+  address: String
+  beers: [Beer]
+}

@@ -6,6 +6,7 @@ const {
   GraphQLList,
 } = require('graphql');
 
+//dummy data
 const beers = [
   {
     name: 'Finback IPA',
@@ -64,6 +65,21 @@ const beerType = new GraphQLObjectType({
 const queryType = new GraphQLObjectType({
   name: 'Query',
   fields: {
+    brewery: {
+      type: breweryType,
+      args: {
+        id: { type: GraphQLInt },
+      },
+      resolve: (source, { id }) => {
+        return breweries[id];
+      },
+    },
+    breweries: {
+      type: new GraphQLList(breweryType),
+      resolve: () => {
+        return breweries;
+      },
+    },
     beer: {
       type: beerType,
       args: {
