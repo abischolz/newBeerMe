@@ -6,17 +6,23 @@ type Query {
 }
 
 type Mutation {
-  beer(name: String!, description: String): Beer!
-  brewery(name: String!, address: String): Brewery!
+  addBeer(name: String!, description: String): Beer!
+  addBrewery(name: String!, address: String): Brewery!
+  updateBrewery(name: String!, address: String): Brewery!
+  deleteBrewery(name: String!, address: String): [Brewery]
+  updateBeer(name: String!, description: String): Beer!
+  deleteBeer(name: String!, description: String): [Beer]
 }
 
 type Beer {
+  id: ID!
   name: String!
   description: String
   brewery: Brewery
 }
 
 type Brewery {
+  id: ID!
   name: String!
   address: String
   beers: [Beer]

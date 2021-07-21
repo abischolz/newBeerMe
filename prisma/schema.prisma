@@ -15,13 +15,14 @@ model Brewery {
   createdAt DateTime @default(now())
   name      String
   address   String?
-  beers     Beer[]
+  Beer      Beer[]
 }
 
 model Beer {
   id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
   name        String
   description String
-  breweryName Brewery? @relation(fields: [breweryId], references: [id])
+  brewery     Brewery? @relation(fields: [breweryId], references: [id])
   breweryId   Int
 }
